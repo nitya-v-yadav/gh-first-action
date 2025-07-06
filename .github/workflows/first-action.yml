@@ -11,7 +11,7 @@ jobs:
         run: echo "Bye Bye"
 
   build-dotnet-app:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
