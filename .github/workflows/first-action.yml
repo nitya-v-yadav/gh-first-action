@@ -1,8 +1,9 @@
 name: First Workflow
 on: workflow_dispatch
+
 jobs: 
   first-job:
-    runs-on: ubuntu-Latest
+    runs-on: ubuntu-latest
     steps:
       - name: Print Greeting
         run: echo "Hello World"
@@ -10,18 +11,18 @@ jobs:
         run: echo "Bye Bye"
 
   build-dotnet-app:
-     runs-on: ubuntu-latest
-     steps:
+    runs-on: ubuntu-latest
+    steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.x' # You can specify your required .NET version here
+          dotnet-version: '8.0.x' # Set to your required version
 
       - name: Restore dependencies
-        run: dotnet restore
+        run: dotnet restore HelloWorld/HelloWorld.sln
 
       - name: Build
-        run: dotnet build --no-restore --configuration Release
+        run: dotnet build HelloWorld/HelloWorld.sln --no-restore --configuration Release
