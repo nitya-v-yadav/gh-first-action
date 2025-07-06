@@ -8,3 +8,20 @@ jobs:
         run: echo "Hello World"
       - name: Print Goodbye
         run: echo "Bye Bye"
+
+  build-dotnet-app:
+     runs-on: ubuntu-latest
+     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x' # You can specify your required .NET version here
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --no-restore --configuration Release
